@@ -53,14 +53,13 @@ class SafeDictionary{
         self.rawValue = value
     }
     
-    /*subscript(key: NSObject) -> SafeDictionary?{
-     let value = self.rawDictionary?[key] as AnyObject
-     return SafeDictionary(value: value)
-     }*/
-    
     subscript(key: String) -> SafeDictionary?{
         let value = self.rawDictionary?[key]
         return SafeDictionary(value: value)
+    }
+   
+   subscript(key: Int) -> SafeDictionary?{
+        return self.arrayOfDictionaries?[key]
     }
     
     func contains(key: String) -> Bool{
@@ -116,6 +115,12 @@ class SafeDictionary{
     var array: [AnyObject]?{
         get{
             return self.rawValue as? [AnyObject]
+        }
+    }
+   
+   var stringArray: [String]?{
+        get{
+            return self.rawValue as? [String]
         }
     }
     
