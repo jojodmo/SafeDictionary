@@ -77,7 +77,12 @@ class SafeDictionary{
     
     func jsonEncoded(withoutKeys keys: [String] = []) -> Data?{
         if let raw = self.rawDictionary{
-            return NSDictionary(dictionary: raw).jsonEncoded(withoutKeys: keys)
+            do{
+               let new = NSMutableDictionary(dictionary: raw)
+               new.removeObjects(forKeys: keys)
+               return try JSONSerialization.data(withJSONObject: new, options: .init(rawValue: 0))
+            }
+            catch _{}        
         }
         return nil
     }
