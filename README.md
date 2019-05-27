@@ -89,5 +89,5 @@ for value in dict?.arrayOfDictionaries ?? []{
 Will print
 
 ```swift
-    ", Value One, Value Purple, Value Banana"
+", Value One, Value Purple, Value Banana"
 ```
